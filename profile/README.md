@@ -14,7 +14,7 @@ projeto existe nesta organização, ele está inteiro no repositório.
 
 | Projeto | O que é |
 |---|---|
-| [Nebula](https://github.com/ishtar-sink/nebula) | Player de música multiplataforma — web, mobile, desktop — com catálogo próprio, playlists, modo offline e controle remoto entre aparelhos, no estilo do Spotify Connect. Roda no seu servidor. |
+| [Nebula](https://github.com/Ishtar-Sink/Nebula) | Player de música multiplataforma — web, mobile, desktop — com catálogo próprio, playlists, modo offline e controle remoto entre aparelhos, no estilo do Spotify Connect. Roda no seu servidor. |
 
 Mais coisas a caminho.
 
@@ -50,8 +50,7 @@ compartilhado entre todos:
 - **Autohospedagem em primeiro lugar**, não como um extra depois.
 
 As duas primeiras convenções estão escritas em
-[docs/identidade-ecossistema.md](https://github.com/ishtar-sink/nebula/blob/main/docs/identidade-ecossistema.md),
-dentro do repositório do Nebula.
+[docs/identidade-ecossistema.md](https://github.com/Ishtar-Sink/.github/blob/main/docs/identidade-ecossistema.md).
 
 ## Contribuindo
 
