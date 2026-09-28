@@ -15,6 +15,7 @@ projeto existe nesta organização, ele está inteiro no repositório.
 | Projeto | O que é |
 |---|---|
 | [Nebula](https://github.com/Ishtar-Sink/Nebula) | Player de música multiplataforma — web, mobile, desktop — com catálogo próprio, playlists, modo offline e controle remoto entre aparelhos, no estilo do Spotify Connect. Roda no seu servidor. |
+| [Atria](https://github.com/Ishtar-Sink/Atria) *(em desenvolvimento)* | Hub pessoal — financeiro, tarefas, diário, notas e acervo num só lugar, sem métrica de produtividade nem cobrança visual. Roda no seu servidor. |
 
 Mais coisas a caminho.
 
@@ -47,6 +48,8 @@ compartilhado entre todos:
 - **Convenção de nomes** — todo produto leva o nome de um fenômeno astronômico cujo
   comportamento real descreve o que o software faz. Nebula é uma nuvem de poeira que junta
   matéria dispersa e forma estrelas; o player junta arquivos soltos e forma uma biblioteca.
+  Atria é a estrela do Triângulo Austral, mas também *átrio*: o cômodo para onde tudo
+  converge antes de ser distribuído — é o hub pessoal do ecossistema.
 - **Autohospedagem em primeiro lugar**, não como um extra depois.
 
 As duas primeiras convenções estão escritas em
