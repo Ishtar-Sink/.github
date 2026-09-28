@@ -4,10 +4,12 @@
 > seção **"Bloco para colar em um novo prompt"** no início do prompt-mãe de qualquer app
 > novo, antes de descrever o que ele faz.
 >
-> Nasceu junto do [Nebula](https://github.com/Ishtar-Sink/Nebula/blob/main/README.md), o primeiro produto do ecossistema — é dele que
-> vêm os valores concretos usados aqui. **Este arquivo descreve uma convenção do
-> ecossistema, não é específico do Nebula** — por isso mora aqui, no repositório `.github` da
-> organização, e não dentro de nenhum produto.
+> Nasceu junto do [Nebula](https://github.com/Ishtar-Sink/Nebula/blob/main/README.md), o
+> primeiro produto do ecossistema. A paleta em vigor foi revisada durante o refinamento do
+> segundo produto, o [Atria](https://github.com/Ishtar-Sink/Atria) — a mudança de rosa para
+> ciano e a adoção de um tema claro oficial vêm de lá, com Nebula preservando os valores
+> antigos até migrar. **Este arquivo descreve uma convenção do ecossistema, não é específico
+> de nenhum produto** — por isso mora aqui, no repositório `.github` da organização.
 
 ## A organização: Ishtar Sink
 
@@ -72,11 +74,12 @@ Checklist antes de fechar um nome:
    aceitável (`<nome>-app`, `use<nome>`) se não estiverem?
 4. Não colide com um projeto open source grande já usando o termo?
 
-**Único nome decidido até agora:**
+**Nomes decididos até agora:**
 
 | Produto | Termo | Por que se qualifica |
 |---|---|---|
 | **Nebula** | nuvem de gás e poeira que forma estrelas | player de música — organiza mídia solta em biblioteca; nascimento a partir de partes dispersas |
+| **Atria** | α Trianguli Australis, estrela mais brilhante do Triângulo Austral | hub pessoal (financeiro, tarefas, diário, notas, acervo) — *átrio*: o pátio central da casa romana para onde todos os cômodos se abrem e por onde entra a luz, também a câmara do coração onde tudo chega antes de ser distribuído; módulos independentes que se abrem para um centro comum |
 
 ## Sistema visual: paleta única em todo o ecossistema
 
@@ -84,50 +87,128 @@ Decisão deliberada: **todo produto usa exatamente a mesma paleta**, não uma va
 app. Prioriza reconhecimento de marca forte sobre diferenciação visual entre produtos — a
 identidade visual diz "isto é Ishtar Sink", o nome e o ícone dizem qual produto é.
 
-Valores em produção, tirados de [`packages/theme/src/index.ts`](https://github.com/Ishtar-Sink/Nebula/blob/main/packages/theme/src/index.ts):
+### 2026 — migração de roxo → rosa para roxo → ciano, com tema claro oficial
+
+> Decidida durante o refinamento do Atria (`Ishtar-Sink/Atria`, spec `SPEC-001.md`), que é
+> por isso o primeiro produto a nascer já nos valores novos.
+
+O gradiente de marca passa de **roxo → rosa, somente dark** para **roxo → ciano, com tema
+claro oficial e dark equivalente**. Rosa não teve nenhum problema — a mudança é de
+posicionamento: **branco vira o padrão do ecossistema**, dark vira a alternativa, não o
+único modo. Isso muda o que "cor de marca" significa: uma cor pensada só para fundo escuro
+raramente sobrevive à travessia para fundo claro sem virar outra cor.
+
+Racional do ciano contra o rosa: rosa saturado sobre fundo claro é agressivo e puxa a leitura
+emocional para urgência. Ciano é frio, recua no fundo e funciona bem como cor de dado — gráfico,
+barra de progresso, estado informativo.
+
+**Rosa vira legado, não erro.** O Nebula continua rodando com os valores antigos (`#A855F7 →
+#EC4899`, só dark) e migra quando for conveniente para o projeto — nada quebra por causa
+desta mudança de convenção.
+
+#### Restrição de contraste que definiu os valores do tema claro
+
+Medido contra o fundo claro `#FAFAFC` (WCAG AA, texto normal ≥ 4,5:1):
+
+| Cor | Contraste | Uso permitido |
+|---|---|---|
+| `#A855F7` (roxo vivo) | ≈ 4,0:1 | **reprova** AA para texto — só preenchimento, gradiente e ilustração |
+| `#7C3AED` | ≈ 5,5:1 | aprova AA — é o roxo de **texto, link e ícone** no tema claro |
+| `#06B6D4` (ciano vivo) | ≈ 2,4:1 | só preenchimento, gráfico e borda |
+| `#0E7490` | ≈ 5,1:1 | aprova AA — é o ciano de **texto e link** no tema claro |
+
+Consequência prática que todo produto novo herda: **no tema claro a cor de marca visível em
+texto é `#7C3AED`, não `#A855F7`.** O `#A855F7` sobrevive em fundo de área, gradiente e
+ilustração, onde contraste de texto não se aplica.
+
+#### Tokens
 
 ```ts
-export const colors = {
-  // Fundo violeta quase preto — mais escuro que o cinza do Spotify, para os acentos roxos brilharem.
-  bg: '#0A0713',
-  bgElevated: '#120C22',
-  surface: '#1A1130',
-  surfaceHover: '#241740',
-  surfaceMuted: '#150F28',
-  border: '#2E1F52',
+// packages/theme/src/tokens.ts — fonte única; nenhum app redeclara cor.
 
-  primary: '#A855F7',
+export const light = {
+  bg:            '#FAFAFC', // branco levemente frio; branco puro em tela cheia cansa
+  bgElevated:    '#FFFFFF',
+  surface:       '#FFFFFF',
+  surfaceMuted:  '#F4F3F8',
+  surfaceHover:  '#EFEDF6',
+  border:        '#E6E3EF',
+  borderStrong:  '#D5D0E3',
+
+  primary:       '#7C3AED', // texto, link, ícone, botão primário
+  primaryHover:  '#6D28D9',
+  primaryBright: '#A855F7', // só preenchimento e gradiente
+  primarySoft:   '#F3EBFF', // fundo do item ativo/hover da sidebar
+  primaryOn:     '#FFFFFF',
+
+  accent:        '#0E7490', // ciano de texto
+  accentFill:    '#06B6D4', // ciano de gráfico e barra
+  accentBright:  '#22D3EE',
+  accentSoft:    '#E0F7FB',
+
+  text:          '#1B1630',
+  textMuted:     '#5C5478',
+  textFaint:     '#8B84A3',
+
+  success:       '#047857',
+  warning:       '#B45309',
+  danger:        '#BE123C',
+  info:          '#0E7490',
+};
+
+export const dark = {
+  bg:            '#0A0713', // preservado da paleta anterior — fundo violeta quase preto
+  bgElevated:    '#120C22',
+  surface:       '#1A1130',
+  surfaceMuted:  '#150F28',
+  surfaceHover:  '#241740',
+  border:        '#2E1F52',
+  borderStrong:  '#3D2A6B',
+
+  primary:       '#A855F7',
+  primaryHover:  '#C084FC',
   primaryBright: '#C084FC',
-  primaryDeep: '#7C3AED',
-  accent: '#EC4899',
-  accentSoft: '#F472B6',
+  primarySoft:   '#241740',
+  primaryOn:     '#0A0713',
 
-  text: '#F6F2FF',
-  textMuted: '#A99CC8',
-  textFaint: '#6E6190',
+  accent:        '#22D3EE',
+  accentFill:    '#06B6D4',
+  accentBright:  '#67E8F9',
+  accentSoft:    '#0E3A44',
 
-  success: '#34D399',
-  danger: '#FB7185',
+  text:          '#F6F2FF',
+  textMuted:     '#A99CC8',
+  textFaint:     '#6E6190',
+
+  success:       '#34D399',
+  warning:       '#FBBF24',
+  danger:        '#FB7185',
+  info:          '#22D3EE',
 };
 
 export const gradients = {
-  brand: ['#A855F7', '#EC4899'],   // roxo → rosa — o gradiente de marca
-  deep: ['#7C3AED', '#A855F7'],
-  night: ['#1A1130', '#0A0713'],
+  brand: ['#7C3AED', '#06B6D4'], // roxo → ciano — substitui roxo → rosa
+  deep:  ['#6D28D9', '#7C3AED'],
+  calm:  ['#F3EBFF', '#E0F7FB'], // fundo de tela não autenticada, no tema claro
 };
 ```
 
-Escalas de forma e espaço, também compartilhadas:
+Escalas de forma e espaço, também compartilhadas e sem mudança nesta revisão:
 
 ```ts
 export const radii = { sm: 8, md: 12, lg: 18, xl: 26, pill: 999 };
 export const space = (n: number) => n * 4; // grade de 4px
 ```
 
-**Regra prática**: todo produto novo importa o pacote de tema compartilhado (hoje
-`packages/theme` dentro do Nebula, a ser extraído para a organização) em vez de redeclarar
-essas cores. Um valor mudado no pacote muda em todos os produtos de uma vez — é a garantia de
+**Regra prática**: todo produto novo importa o pacote de tema compartilhado em vez de
+redeclarar essas cores. Hoje o pacote vive dentro de cada produto (`packages/theme` no
+Nebula e no Atria) com um comentário no topo apontando este documento como origem; a
+extração para um pacote único da organização, consumido por ambos, ainda está pendente. Um
+valor mudado no pacote compartilhado muda em todos os produtos de uma vez — é a garantia de
 que a paleta não diverge com o tempo.
+
+**Alternância de tema**: `data-theme="light" | "dark"` no elemento raiz, **padrão `light`**,
+`prefers-color-scheme` respeitado só quando o usuário nunca escolheu explicitamente.
 
 ### O truque de cor determinística por item
 
@@ -138,10 +219,10 @@ nada:
 
 ```ts
 export const artPalettes: Array<[string, string]> = [
-  ['#A855F7', '#EC4899'], ['#7C3AED', '#2DD4BF'], ['#F472B6', '#8B5CF6'],
-  ['#6366F1', '#A855F7'], ['#DB2777', '#7C3AED'], ['#8B5CF6', '#38BDF8'],
-  ['#C026D3', '#F59E0B'], ['#4C1D95', '#EC4899'], ['#9333EA', '#22D3EE'],
-  ['#E879F9', '#6D28D9'],
+  ['#7C3AED', '#06B6D4'], ['#A855F7', '#22D3EE'], ['#6366F1', '#2DD4BF'],
+  ['#8B5CF6', '#38BDF8'], ['#4C1D95', '#0E7490'], ['#9333EA', '#67E8F9'],
+  ['#5B21B6', '#14B8A6'], ['#C084FC', '#0891B2'], ['#7E22CE', '#06B6D4'],
+  ['#6D28D9', '#5EEAD4'],
 ];
 
 export function paletteFor(seed: string): [string, string] {
@@ -151,25 +232,36 @@ export function paletteFor(seed: string): [string, string] {
 }
 ```
 
-Mesmo id → mesma cor em todo cliente, sem round-trip ao servidor nem estado extra.
+Mesmo id → mesma cor em todo cliente, sem round-trip ao servidor nem estado extra. Paleta
+repaginada para a família roxo–ciano; o Nebula mantém a variante rosa até migrar.
 
 ## Tipografia
 
-Fonte **Outfit** (geométrica, sans-serif), com uma regra de tracking que já aparece em todo
-o Nebula ([`apps/web/src/styles.css`](https://github.com/Ishtar-Sink/Nebula/blob/main/apps/web/src/styles.css)):
+Par de fontes, não uma só — decidido durante o refinamento do Atria porque um produto com
+blocos longos de texto (diário, notas, formulário) expôs que a Outfit foi desenhada para
+display, não para parágrafo:
 
-- **Títulos grandes**: peso 700–800, `letter-spacing` **negativo** (`-0.4px` a `-1.6px`
-  conforme o tamanho sobe) — aperta o texto grande, evita o efeito "solto".
-- **Rótulos pequenos em caixa alta** ("eyebrow", badges, seções): peso 600, `letter-spacing`
-  **positivo** (`0.9px` a `1.4px`) — abre o texto pequeno, mantém legibilidade em maiúsculas.
+| Papel | Fonte | Regra |
+|---|---|---|
+| Títulos grandes, números grandes, logo | **Outfit** | peso 700–800, `letter-spacing` **negativo** (`-0.4px` a `-1.6px` conforme o tamanho sobe) — aperta o texto grande, evita o efeito "solto" |
+| Rótulos pequenos em caixa alta ("eyebrow", badges, seções) | **Outfit** | peso 600, `letter-spacing` **positivo** (`0.9px` a `1.4px`) — abre o texto pequeno, mantém legibilidade em maiúsculas |
+| Corpo, formulário, tabela, editor | **Inter** | peso 400–600, `letter-spacing` 0, `line-height` 1,6 em texto longo |
 
 ```css
-font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+--font-display: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+--font-body:    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
 
-.page-title      { font-size: 44px; font-weight: 800; letter-spacing: -1.6px; line-height: 1.05; }
-.section-title   { font-size: 21px; font-weight: 700; letter-spacing: -0.5px; }
-.page-eyebrow    { font-size: 12px; font-weight: 600; letter-spacing: 1.4px; text-transform: uppercase; }
+.page-title      { font-family: var(--font-display); font-size: 44px; font-weight: 800; letter-spacing: -1.6px; line-height: 1.05; }
+.section-title   { font-family: var(--font-display); font-size: 21px; font-weight: 700; letter-spacing: -0.5px; }
+.page-eyebrow    { font-family: var(--font-display); font-size: 12px; font-weight: 600; letter-spacing: 1.4px; text-transform: uppercase; }
+.prose           { font-family: var(--font-body); font-size: 16px; line-height: 1.65; max-width: 68ch; }
 ```
+
+Um produto sem texto longo (o Nebula, por exemplo) pode continuar só com Outfit — o par com
+Inter é regra para quem tem prosa, não obrigação universal retroativa.
+
+Fontes são **servidas pelo próprio app**, nunca por um CDN de fontes em runtime —
+autohospedagem não faz requisição externa sem o usuário pedir.
 
 ## Bloco para colar em um novo prompt
 
@@ -186,11 +278,17 @@ não-negociáveis:
 
 2. **Identidade visual**: usar a paleta e os tokens do ecossistema tal como estão, sem criar
    uma paleta própria para este produto.
-   - Fundo violeta quase preto (`#0A0713`), superfícies em `#1A1130`/`#241740`,
-     texto em `#F6F2FF`/`#A99CC8`/`#6E6190`.
-   - Marca: gradiente roxo → rosa (`#A855F7` → `#EC4899`).
-   - Fonte Outfit; títulos grandes com letter-spacing negativo, rótulos pequenos em
-     caixa alta com letter-spacing positivo.
+   - **Tema claro é o padrão**, dark é a alternativa — não o único modo. Fundo claro
+     `#FAFAFC`, superfícies `#FFFFFF`/`#F4F3F8`, texto `#1B1630`/`#5C5478`/`#8B84A3`. Dark
+     equivalente: fundo `#0A0713`, superfícies `#1A1130`/`#241740`, texto
+     `#F6F2FF`/`#A99CC8`/`#6E6190`.
+   - Marca: gradiente roxo → ciano (`#7C3AED` → `#06B6D4`). No tema claro, a cor de marca
+     em **texto** é `#7C3AED` (não `#A855F7` — reprova contraste AA para texto); `#A855F7`
+     é só para preenchimento e gradiente. O par correspondente em ciano é `#0E7490` para
+     texto, `#06B6D4` para preenchimento.
+   - Fonte **Outfit** para título/número grande/rótulo em caixa alta (letter-spacing
+     negativo nos grandes, positivo nos pequenos); **Inter** para corpo, formulário e
+     tabela, se o produto tiver texto longo.
    - Raios de borda: 8/12/18/26px, pill para badges e botões redondos.
    - Se houver itens sem imagem própria (cards, avatares, tags), gerar a cor a partir de
      um hash determinístico do id, não de estado salvo — ver "cor determinística por item"
