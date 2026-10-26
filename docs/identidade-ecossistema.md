@@ -87,6 +87,146 @@ Decisão deliberada: **todo produto usa exatamente a mesma paleta**, não uma va
 app. Prioriza reconhecimento de marca forte sobre diferenciação visual entre produtos — a
 identidade visual diz "isto é Ishtar Sink", o nome e o ícone dizem qual produto é.
 
+### 2026-10 — nova paleta com profundidade (Flare)
+
+> Origem: refinamento da SPEC-002 do Flare (`Ishtar-Sink/Flare`, "Melhorias no Backoffice"),
+> com a paleta aprovada em 25/10/2026. O bloco de tokens da subseção de 2026, logo abaixo, já
+> traz estes valores.
+
+A paleta continua única em todo o ecossistema, e o roxo continua sendo a cor da marca. A
+mudança é de **estrutura**, não de identidade: o tema anterior era plano, com fundo, cartão e
+borda quase na mesma luminosidade e sem sombra, e as cores de estado só existiam como cor de
+texto. Nada se destacava do fundo, e sucesso, aviso e erro só se distinguiam lendo a palavra.
+
+O que muda:
+
+- **Fundo com matiz roxo.** O fundo claro deixa de ser o branco levemente frio (`#FAFAFC`) e
+  passa a lavanda claro (`#F3F0FA`); os cartões continuam brancos. A diferença de luminosidade
+  entre página e cartão cria a primeira camada de profundidade sem precisar de borda grossa. No
+  escuro, o fundo segue violeta quase preto (`#0B0816`).
+- **Camadas de elevação.** Três níveis (`elevation1` a `elevation3`) para cartão, menu e
+  diálogo. No claro, todas as camadas são brancas e a diferença vem da sombra (`shadows.sm`,
+  `md` e `lg`), tingida de roxo escuro em vez de preto para não sujar o fundo lavanda. No
+  escuro, a sombra quase não aparece, então cada nível sobe de luminosidade e a sombra só
+  reforça.
+- **Roxo de texto um degrau mais escuro no claro.** `#6D28D9` substitui `#7C3AED` como roxo de
+  texto. Sobre o fundo lavanda e sobre `primarySoft`, o roxo anterior ficava perto do limite de
+  4,5:1; o novo tem folga. `#A855F7` continua só para preenchimento e gradiente. No escuro, o
+  roxo de texto sobe para `#A78BFA`.
+- **Cores de status com fundo suave.** `successSoft`, `warningSoft`, `dangerSoft` e `infoSoft`
+  dão a cada estado um fundo de baixa saturação, com texto e ícone na cor cheia do estado.
+  Estado deixa de depender só do matiz: o fundo, o ícone e a palavra dizem o mesmo. O aviso
+  escurece de `#B45309` para `#92400E` no claro, para passar em AA sobre o seu fundo suave. A
+  informação deixa de repetir o ciano do destaque e vira azul (`#0369A1` no claro, `#38BDF8` no
+  escuro), para que "informação" não se confunda com "destaque de dado".
+- **Texto com mais contraste.** `text` e `textMuted` escurecem um pouco no claro e clareiam no
+  escuro, para que o texto secundário passe em AA também sobre `surfaceMuted` e sobre os fundos
+  suaves.
+- **Movimento com tokens.** Durações (`motion.fast` 120 ms, `motion.base` 200 ms,
+  `motion.slow` 320 ms) e curvas (`motion.ease.*`) viram tokens, para que a animação seja igual
+  em todos os produtos. Nenhuma transição passa de 320 ms.
+
+**Consequência prática que todo produto herda**: no tema claro a cor de marca em texto é
+`#6D28D9`, e o fundo de um estado é sempre o `*Soft` correspondente, nunca a cor cheia.
+
+#### Valores que mudam
+
+Os tokens que não aparecem nas tabelas mantêm o valor anterior (por exemplo, `surface` no claro,
+`primaryBright`, `accent`, `accentFill`, `success` e `danger`). Os valores anteriores ficam
+registrados aqui como legado.
+
+**Tema claro**
+
+| Token | Antes | Depois |
+|---|---|---|
+| `bg` | `#FAFAFC` | `#F3F0FA` |
+| `bgElevated` | `#FFFFFF` | `#FAF8FE` |
+| `surfaceMuted` | `#F4F3F8` | `#EAE5F6` |
+| `surfaceHover` | `#EFEDF6` | `#E1DAF2` |
+| `border` | `#E6E3EF` | `#D9D1EC` |
+| `borderStrong` | `#D5D0E3` | `#BFB3DD` |
+| `primary` | `#7C3AED` | `#6D28D9` |
+| `primaryHover` | `#6D28D9` | `#5B21B6` |
+| `primarySoft` | `#F3EBFF` | `#EBE0FD` |
+| `accentSoft` | `#E0F7FB` | `#D8F1F6` |
+| `text` | `#1B1630` | `#1A1230` |
+| `textMuted` | `#5C5478` | `#4F4469` |
+| `warning` | `#B45309` | `#92400E` |
+| `info` | `#0E7490` | `#0369A1` |
+
+**Tema escuro**
+
+| Token | Antes | Depois |
+|---|---|---|
+| `bg` | `#0A0713` | `#0B0816` |
+| `bgElevated` | `#120C22` | `#110B21` |
+| `surface` | `#1A1130` | `#181028` |
+| `surfaceMuted` | `#150F28` | `#130D22` |
+| `surfaceHover` | `#241740` | `#241A3D` |
+| `border` | `#2E1F52` | `#2F2250` |
+| `borderStrong` | `#3D2A6B` | `#45337A` |
+| `primary` | `#A855F7` | `#A78BFA` |
+| `primaryHover` | `#C084FC` | `#C4B5FD` |
+| `primarySoft` | `#241740` | `#2B1D52` |
+| `primaryOn` | `#0A0713` | `#12082B` |
+| `accentSoft` | `#0E3A44` | `#0F3342` |
+| `text` | `#F6F2FF` | `#F5F1FF` |
+| `textMuted` | `#A99CC8` | `#B1A5CF` |
+| `textFaint` | `#6E6190` | `#7A6C9E` |
+| `info` | `#22D3EE` | `#38BDF8` |
+
+Os tokens de estado `*Soft`, as camadas `elevation1` a `elevation3` e `shadows` são novos nos
+dois temas e aparecem no bloco de tokens abaixo.
+
+#### Contraste medido
+
+Texto normal exige 4,5:1 (WCAG AA). A razão é a luminância relativa do WCAG 2, calculada por
+script e não estimada. Pares principais:
+
+| Tema | Texto | Fundo | Razão | Resultado |
+|---|---|---|---|---|
+| Claro | `text` #1A1230 | `bg` #F3F0FA | 15,90:1 | AA |
+| Claro | `text` #1A1230 | `surface` #FFFFFF | 17,90:1 | AA |
+| Claro | `textMuted` #4F4469 | `bg` #F3F0FA | 7,89:1 | AA |
+| Claro | `textMuted` #4F4469 | `surface` #FFFFFF | 8,89:1 | AA |
+| Claro | `primary` #6D28D9 | `bg` #F3F0FA | 6,31:1 | AA |
+| Claro | `primary` #6D28D9 | `surface` #FFFFFF | 7,10:1 | AA |
+| Claro | `primary` #6D28D9 | `primarySoft` #EBE0FD | 5,62:1 | AA |
+| Claro | `accent` #0E7490 | `bg` #F3F0FA | 4,76:1 | AA |
+| Claro | `accent` #0E7490 | `accentSoft` #D8F1F6 | 4,55:1 | AA (pior par do claro) |
+| Claro | `success` #047857 | `successSoft` #D9F3E7 | 4,68:1 | AA |
+| Claro | `warning` #92400E | `warningSoft` #FCEFCF | 6,21:1 | AA |
+| Claro | `danger` #BE123C | `dangerSoft` #FDE2E9 | 5,16:1 | AA |
+| Claro | `info` #0369A1 | `infoSoft` #DAEEFB | 4,97:1 | AA |
+| Claro | `primaryOn` #FFFFFF | `primary` #6D28D9 | 7,10:1 | AA |
+| Escuro | `text` #F5F1FF | `bg` #0B0816 | 17,83:1 | AA |
+| Escuro | `text` #F5F1FF | `surface` #181028 | 16,53:1 | AA |
+| Escuro | `textMuted` #B1A5CF | `bg` #0B0816 | 8,63:1 | AA |
+| Escuro | `textMuted` #B1A5CF | `surface` #181028 | 8,00:1 | AA |
+| Escuro | `primary` #A78BFA | `bg` #0B0816 | 7,28:1 | AA |
+| Escuro | `primary` #A78BFA | `surface` #181028 | 6,75:1 | AA |
+| Escuro | `primary` #A78BFA | `primarySoft` #2B1D52 | 5,51:1 | AA (pior par do escuro) |
+| Escuro | `accent` #22D3EE | `surface` #181028 | 10,16:1 | AA |
+| Escuro | `success` #34D399 | `successSoft` #0E2E27 | 7,59:1 | AA |
+| Escuro | `warning` #FBBF24 | `warningSoft` #33260B | 8,84:1 | AA |
+| Escuro | `danger` #FB7185 | `dangerSoft` #3A1222 | 6,05:1 | AA |
+| Escuro | `info` #38BDF8 | `infoSoft` #0C2C42 | 6,74:1 | AA |
+| Escuro | `primaryOn` #12082B | `primary` #A78BFA | 7,04:1 | AA |
+
+#### textFaint: só decorativo ou texto grande
+
+`textFaint` não passa em 4,5:1 e por isso **não é texto de leitura**. Serve a ícone inerte,
+divisor e dica não essencial, ou a texto grande e componente, com exigência de 3:1. Medido:
+no claro, `#8B84A3` tem 3,15:1 sobre `bg` e 3,54:1 sobre `surface`; no escuro, `#7A6C9E` tem
+4,21:1 sobre `bg` e 3,91:1 sobre `surface`.
+
+#### Legado e migração
+
+**Rosa vira legado, não erro, e roxo antigo também.** Nebula e Atria migram para esta paleta nos
+próprios projetos quando for conveniente. Até lá continuam com os valores anteriores, e nada
+quebra por causa desta mudança: os valores de antes ficam nas tabelas desta subseção e valem
+como legado.
+
 ### 2026 — migração de roxo → rosa para roxo → ciano, com tema claro oficial
 
 > Decidida durante o refinamento do Atria (`Ishtar-Sink/Atria`, spec `SPEC-001.md`), que é
@@ -117,79 +257,125 @@ Medido contra o fundo claro `#FAFAFC` (WCAG AA, texto normal ≥ 4,5:1):
 | `#06B6D4` (ciano vivo) | ≈ 2,4:1 | só preenchimento, gráfico e borda |
 | `#0E7490` | ≈ 5,1:1 | aprova AA — é o ciano de **texto e link** no tema claro |
 
+> A partir de 2026-10, esta tabela vale como registro dos valores anteriores. No tema claro o
+> roxo de texto passa a ser `#6D28D9` (ver a subseção `2026-10` acima).
+
 Consequência prática que todo produto novo herda: **no tema claro a cor de marca visível em
 texto é `#7C3AED`, não `#A855F7`.** O `#A855F7` sobrevive em fundo de área, gradiente e
 ilustração, onde contraste de texto não se aplica.
 
 #### Tokens
 
+> Valores atualizados em 2026-10 (ver a subseção acima), com `motion` novo. Os valores
+> anteriores estão nas tabelas dela. `gradients` e as escalas de forma e espaço não mudam.
+
 ```ts
 // packages/theme/src/tokens.ts — fonte única; nenhum app redeclara cor.
 
 export const light = {
-  bg:            '#FAFAFC', // branco levemente frio; branco puro em tela cheia cansa
-  bgElevated:    '#FFFFFF',
-  surface:       '#FFFFFF',
-  surfaceMuted:  '#F4F3F8',
-  surfaceHover:  '#EFEDF6',
-  border:        '#E6E3EF',
-  borderStrong:  '#D5D0E3',
+  bg:            '#F3F0FA', // lavanda claro: a diferença para o cartão branco cria a primeira camada
+  bgElevated:    '#FAF8FE', // barra lateral e cabeçalho, entre a página e os cartões
+  surface:       '#FFFFFF', // cartões e painéis (camada 1)
+  surfaceMuted:  '#EAE5F6',
+  surfaceHover:  '#E1DAF2',
+  border:        '#D9D1EC',
+  borderStrong:  '#BFB3DD',
 
-  primary:       '#7C3AED', // texto, link, ícone, botão primário
-  primaryHover:  '#6D28D9',
+  elevation1:    '#FFFFFF', // cartão em repouso
+  elevation2:    '#FFFFFF', // menu, popover, item arrastado (a sombra faz a diferença)
+  elevation3:    '#FFFFFF', // diálogo modal e toast
+
+  primary:       '#6D28D9', // texto, link, ícone, botão primário
+  primaryHover:  '#5B21B6',
   primaryBright: '#A855F7', // só preenchimento e gradiente
-  primarySoft:   '#F3EBFF', // fundo do item ativo/hover da sidebar
+  primarySoft:   '#EBE0FD', // item ativo da sidebar, chip e selo de marca
   primaryOn:     '#FFFFFF',
 
-  accent:        '#0E7490', // ciano de texto
+  accent:        '#0E7490', // ciano de texto e link
   accentFill:    '#06B6D4', // ciano de gráfico e barra
-  accentBright:  '#22D3EE',
-  accentSoft:    '#E0F7FB',
+  accentBright:  '#22D3EE', // destaque e gradiente
+  accentSoft:    '#D8F1F6', // fundo do selo e do destaque ciano
 
-  text:          '#1B1630',
-  textMuted:     '#5C5478',
-  textFaint:     '#8B84A3',
+  text:          '#1A1230', // texto principal
+  textMuted:     '#4F4469', // texto secundário e rótulo
+  textFaint:     '#8B84A3', // só decorativo e texto grande (3:1)
 
-  success:       '#047857',
-  warning:       '#B45309',
-  danger:        '#BE123C',
-  info:          '#0E7490',
+  success:       '#047857', // texto e ícone de sucesso
+  successSoft:   '#D9F3E7', // fundo de toast, selo e alerta de sucesso
+  warning:       '#92400E', // escurecido para passar em AA sobre warningSoft
+  warningSoft:   '#FCEFCF', // fundo de toast, selo e alerta de aviso
+  danger:        '#BE123C', // texto, ícone e botão de perigo
+  dangerSoft:    '#FDE2E9', // fundo de toast, selo e alerta de erro
+  info:          '#0369A1', // azul, separado do ciano do destaque
+  infoSoft:      '#DAEEFB', // fundo de toast, selo e alerta informativo
+
+  shadows: {
+    sm: '0 1px 2px rgba(42, 24, 96, 0.08)',                                       // botão, campo e chip
+    md: '0 4px 12px rgba(42, 24, 96, 0.10), 0 1px 3px rgba(42, 24, 96, 0.06)',    // cartão elevado, menu e toast
+    lg: '0 18px 44px rgba(42, 24, 96, 0.20), 0 4px 12px rgba(42, 24, 96, 0.08)',  // diálogo modal
+  },
 };
 
 export const dark = {
-  bg:            '#0A0713', // preservado da paleta anterior — fundo violeta quase preto
-  bgElevated:    '#120C22',
-  surface:       '#1A1130',
-  surfaceMuted:  '#150F28',
-  surfaceHover:  '#241740',
-  border:        '#2E1F52',
-  borderStrong:  '#3D2A6B',
+  bg:            '#0B0816', // violeta quase preto
+  bgElevated:    '#110B21', // barra lateral e cabeçalho
+  surface:       '#181028', // cartões e painéis (camada 1)
+  surfaceMuted:  '#130D22',
+  surfaceHover:  '#241A3D',
+  border:        '#2F2250',
+  borderStrong:  '#45337A',
 
-  primary:       '#A855F7',
-  primaryHover:  '#C084FC',
-  primaryBright: '#C084FC',
-  primarySoft:   '#241740',
-  primaryOn:     '#0A0713',
+  elevation1:    '#181028', // cartão em repouso (igual a surface)
+  elevation2:    '#201638', // menu, popover, item arrastado
+  elevation3:    '#2A1D4A', // diálogo modal e toast
 
-  accent:        '#22D3EE',
-  accentFill:    '#06B6D4',
-  accentBright:  '#67E8F9',
-  accentSoft:    '#0E3A44',
+  primary:       '#A78BFA', // texto, link, ícone, botão primário
+  primaryHover:  '#C4B5FD',
+  primaryBright: '#C084FC', // só preenchimento e gradiente
+  primarySoft:   '#2B1D52', // item ativo da sidebar, chip e selo de marca
+  primaryOn:     '#12082B',
 
-  text:          '#F6F2FF',
-  textMuted:     '#A99CC8',
-  textFaint:     '#6E6190',
+  accent:        '#22D3EE', // ciano de texto e link
+  accentFill:    '#06B6D4', // ciano de gráfico e barra
+  accentBright:  '#67E8F9', // destaque e gradiente
+  accentSoft:    '#0F3342', // fundo do selo e do destaque ciano
 
-  success:       '#34D399',
-  warning:       '#FBBF24',
-  danger:        '#FB7185',
-  info:          '#22D3EE',
+  text:          '#F5F1FF', // texto principal
+  textMuted:     '#B1A5CF', // texto secundário e rótulo
+  textFaint:     '#7A6C9E', // só decorativo e texto grande (3:1)
+
+  success:       '#34D399', // texto e ícone de sucesso
+  successSoft:   '#0E2E27', // fundo de toast, selo e alerta de sucesso
+  warning:       '#FBBF24', // texto e ícone de aviso
+  warningSoft:   '#33260B', // fundo de toast, selo e alerta de aviso
+  danger:        '#FB7185', // texto, ícone e botão de perigo
+  dangerSoft:    '#3A1222', // fundo de toast, selo e alerta de erro
+  info:          '#38BDF8', // texto e ícone de informação
+  infoSoft:      '#0C2C42', // fundo de toast, selo e alerta informativo
+
+  shadows: {
+    sm: '0 1px 2px rgba(0, 0, 0, 0.45)',                                                                // botão, campo e chip
+    md: '0 6px 16px rgba(0, 0, 0, 0.50), 0 0 0 1px rgba(167, 139, 250, 0.08)',                          // cartão elevado, menu e toast
+    lg: '0 22px 52px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(167, 139, 250, 0.14)',                         // diálogo modal
+  },
 };
 
 export const gradients = {
   brand: ['#7C3AED', '#06B6D4'], // roxo → ciano — substitui roxo → rosa
   deep:  ['#6D28D9', '#7C3AED'],
   calm:  ['#F3EBFF', '#E0F7FB'], // fundo de tela não autenticada, no tema claro
+};
+
+export const motion = {
+  fast: 120, // ms: hover, foco, pressão, entrada de tooltip
+  base: 200, // ms: diálogo, toast, aba, expandir linha
+  slow: 320, // ms: troca de tela, preenchimento de barra (teto)
+  ease: {
+    standard: 'cubic-bezier(0.4, 0, 0.2, 1)', // mudança de estado do que já está na tela
+    enter:    'cubic-bezier(0, 0, 0.2, 1)',   // elemento que entra
+    exit:     'cubic-bezier(0.4, 0, 1, 1)',   // elemento que sai
+    linear:   'linear',                        // só laços contínuos
+  },
 };
 ```
 
@@ -278,6 +464,8 @@ não-negociáveis:
 
 2. **Identidade visual**: usar a paleta e os tokens do ecossistema tal como estão, sem criar
    uma paleta própria para este produto.
+   - Valores vigentes desde 2026-10 (Flare): ver a subseção `2026-10` deste documento. Onde
+     esta lista diverge, a subseção nova vale.
    - **Tema claro é o padrão**, dark é a alternativa — não o único modo. Fundo claro
      `#FAFAFC`, superfícies `#FFFFFF`/`#F4F3F8`, texto `#1B1630`/`#5C5478`/`#8B84A3`. Dark
      equivalente: fundo `#0A0713`, superfícies `#1A1130`/`#241740`, texto
