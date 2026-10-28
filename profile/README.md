@@ -17,7 +17,7 @@ projeto existe nesta organização, ele está inteiro no repositório.
 | [Nebula](https://github.com/Ishtar-Sink/Nebula) | Player de música multiplataforma — web, mobile, desktop — com catálogo próprio, playlists, modo offline e controle remoto entre aparelhos, no estilo do Spotify Connect. Roda no seu servidor. |
 | [Atria](https://github.com/Ishtar-Sink/Atria) | Hub pessoal — financeiro, tarefas, diário, notas e acervo num só lugar, sem métrica de produtividade nem cobrança visual. Roda no seu servidor. |
 | [Flare](https://github.com/Ishtar-Sink/Flare) *(em desenvolvimento)* | Soundpad pessoal com backoffice web e plugin para o Stream Deck — biblioteca de sons a partir de links ou arquivos, recorte do trecho e vários sons ao mesmo tempo, com saída para o Discord, o OBS ou a caixa de som. Roda no seu servidor. |
-| Translunar *(em desenvolvimento)* | Pipeline de legendas multilíngues — pega cortes de vídeo vertical em português e gera versões legendadas em inglês, espanhol e francês, localizadas em vez de traduzidas ao pé da letra e prontas para Reels, TikTok, Shorts e X. O vídeo não sai da sua máquina. |
+| [Translunar](https://github.com/Ishtar-Sink/Translunar) *(em desenvolvimento)* | Pipeline de legendas multilíngues — pega cortes de vídeo vertical em português e gera versões legendadas em inglês, espanhol e francês, localizadas em vez de traduzidas ao pé da letra e prontas para Reels, TikTok, Shorts e X. O vídeo não sai da sua máquina. |
 
 Mais coisas a caminho.
 
