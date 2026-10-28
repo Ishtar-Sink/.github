@@ -51,9 +51,11 @@ compartilhado entre todos:
   comportamento real descreve o que o software faz. Nebula é uma nuvem de poeira que junta
   matéria dispersa e forma estrelas; o player junta arquivos soltos e forma uma biblioteca.
   Atria é a estrela do Triângulo Austral, mas também *átrio*: o cômodo para onde tudo
-  converge antes de ser distribuído — é o hub pessoal do ecossistema. Translunar é a queima
-  de motor que tira a nave da órbita da Terra rumo a outro mundo; a ferramenta tira o vídeo
-  do público de origem e o lança para outros idiomas, com a legenda queimada na imagem.
+  converge antes de ser distribuído — é o hub pessoal do ecossistema. Flare é a erupção
+  solar, um clarão súbito e breve; o soundpad dispara um som curto que aparece de uma vez e
+  some. Translunar é a queima de motor que tira a nave da órbita da Terra rumo a outro
+  mundo; a ferramenta tira o vídeo do público de origem e o lança para outros idiomas, com a
+  legenda queimada na imagem.
 - **Autohospedagem em primeiro lugar**, não como um extra depois.
 
 As duas primeiras convenções estão escritas em

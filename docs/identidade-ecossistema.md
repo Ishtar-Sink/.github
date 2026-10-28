@@ -80,6 +80,7 @@ Checklist antes de fechar um nome:
 |---|---|---|
 | **Nebula** | nuvem de gás e poeira que forma estrelas | player de música — organiza mídia solta em biblioteca; nascimento a partir de partes dispersas |
 | **Atria** | α Trianguli Australis, estrela mais brilhante do Triângulo Austral | hub pessoal (financeiro, tarefas, diário, notas, acervo) — *átrio*: o pátio central da casa romana para onde todos os cômodos se abrem e por onde entra a luz, também a câmara do coração onde tudo chega antes de ser distribuído; módulos independentes que se abrem para um centro comum |
+| **Flare** | erupção solar: um clarão súbito, intenso e breve na superfície do Sol | soundpad pessoal — dispara sob demanda um som curto e marcante: aperta o botão, o som aparece de uma vez e some. Decidido no refinamento da SPEC-001, quando o projeto ainda se chamava "Soundpad" |
 | **Translunar** | injeção translunar: a queima de motor que tira a nave da órbita da Terra e a manda para outro mundo | pipeline de legendas multilíngues — o corte em pt-BR sai do público de origem e é lançado para os públicos de outros idiomas, localizado em vez de traduzido literalmente; a manobra é literalmente uma *burn*, e a ferramenta queima a legenda no vídeo; *trans-* ecoa *translate* sem prometer tradução literal |
 
 Translunar, decidido em 2026-10-28 a partir da SPEC-001 ("Pipeline de legendas
