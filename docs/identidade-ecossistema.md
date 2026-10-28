@@ -80,6 +80,24 @@ Checklist antes de fechar um nome:
 |---|---|---|
 | **Nebula** | nuvem de gás e poeira que forma estrelas | player de música — organiza mídia solta em biblioteca; nascimento a partir de partes dispersas |
 | **Atria** | α Trianguli Australis, estrela mais brilhante do Triângulo Austral | hub pessoal (financeiro, tarefas, diário, notas, acervo) — *átrio*: o pátio central da casa romana para onde todos os cômodos se abrem e por onde entra a luz, também a câmara do coração onde tudo chega antes de ser distribuído; módulos independentes que se abrem para um centro comum |
+| **Translunar** | injeção translunar: a queima de motor que tira a nave da órbita da Terra e a manda para outro mundo | pipeline de legendas multilíngues — o corte em pt-BR sai do público de origem e é lançado para os públicos de outros idiomas, localizado em vez de traduzido literalmente; a manobra é literalmente uma *burn*, e a ferramenta queima a legenda no vídeo; *trans-* ecoa *translate* sem prometer tradução literal |
+
+Translunar, decidido em 2026-10-28 a partir da SPEC-001 ("Pipeline de legendas
+multilíngues"). Disponibilidade na data: npm e PyPI livres, `translunar.dev` e
+`translunar.app` sem registro aparente; `.com`, `.io` e o usuário `translunar` no GitHub
+ocupados, o que não afeta `Ishtar-Sink/Translunar`. Ressalva aceita: 10 letras, mais longo
+que Nebula e Atria. Termos avaliados e descartados para esse produto:
+
+- **Rosetta** (sonda da ESA, nomeada pela Pedra de Roseta, um texto em três escritas):
+  metáfora quase perfeita, mas colide com Apple Rosetta e Rosetta Stone, e npm, PyPI e
+  `.dev` estão ocupados.
+- **Refracta** (refração: a luz se curva ao entrar num meio novo): npm e PyPI livres, mas já
+  existe uma ferramenta Linux chamada Refracta, e `.com` e `.io` estão ocupados.
+- **Radiant** (o ponto de onde os meteoros de uma chuva parecem sair): npm e PyPI ocupados,
+  e o projeto `radiant/radiant` já existe.
+- **Doppler** (o mesmo sinal percebido de forma diferente por cada observador): colide com a
+  empresa Doppler, e npm e PyPI estão ocupados.
+- **Parallax**, **Perseid** e **Lensing**: ocupados, ou com a metáfora mais fraca.
 
 ## Sistema visual: paleta única em todo o ecossistema
 
