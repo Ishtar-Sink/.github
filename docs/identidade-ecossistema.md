@@ -444,6 +444,44 @@ que a paleta não diverge com o tempo.
 **Alternância de tema**: `data-theme="light" | "dark"` no elemento raiz, **padrão `light`**,
 `prefers-color-scheme` respeitado só quando o usuário nunca escolheu explicitamente.
 
+### White label: a única exceção à paleta única
+
+> Decidida em 2026-11-10, no estudo de escopo do Synestia (`Ishtar-Sink/Synestia`,
+> `docs/estudos/ESTUDO-001-plataforma-de-estudos.md`), o primeiro produto com white label.
+
+Um produto pode permitir que **a instância de um terceiro** troque a marca, para que uma
+escola ou um coletivo apareça para o próprio público com o próprio nome. O produto em si
+continua com o nome e a paleta do Ishtar Sink, que é o que aparece numa instalação sem
+configuração. A regra da paleta única vale para os produtos; o white label é uma escolha de
+quem hospeda.
+
+O que a instância pode trocar, sempre pelo backoffice e sem mexer no código:
+
+- nome, logo e ícone, inclusive o nome e o ícone do aplicativo instalado (manifesto do PWA
+  gerado por instância);
+- a **camada de marca**: `primary`, `primaryHover`, `primaryBright`, `primarySoft`,
+  `primaryOn` e o gradiente `brand`, nos temas claro e escuro;
+- textos institucionais (boas-vindas, rodapé, aviso de privacidade), domínio e contato.
+
+O que **não** muda: fundos, superfícies, bordas, cores de estado (`success`, `warning`,
+`danger`, `info` e os `*Soft`), sombras, raios, espaços, movimento e tipografia. Eles
+continuam vindo do pacote de tema, e a troca acontece em tempo de execução, por variáveis CSS
+que sobrescrevem só os tokens de marca.
+
+Regras para qualquer produto que ofereça white label:
+
+- **Contraste validado no backoffice.** A cor de marca que não passar em 4,5:1 (WCAG AA)
+  sobre `bg` e `surface` é recusada para texto e aceita só como preenchimento, como já
+  acontece com `#A855F7`. O backoffice calcula a razão e mostra o motivo da recusa; a marca
+  de terceiros nunca deixa a interface ilegível.
+- **O link para o código-fonte não pode ser removido.** A AGPL-3.0 garante a quem usa pela
+  rede o acesso ao código da versão em uso, e isso continua valendo com a marca trocada. O
+  crédito "feito com <produto>" vem ligado por padrão, mas é opcional.
+- **Conteúdo exportado não carrega a marca da instância.** Pacotes trocados entre
+  instâncias levam só o conteúdo.
+- **Sem white label por padrão.** Um produto só oferece white label quando o uso por
+  terceiros fizer parte do escopo dele, com esta seção como referência.
+
 ### O truque de cor determinística por item
 
 Onde o produto tem uma coleção de itens sem imagem própria (faixas sem capa, no Nebula —
