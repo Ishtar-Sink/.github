@@ -83,6 +83,7 @@ Checklist antes de fechar um nome:
 | **Flare** | erupção solar: um clarão súbito, intenso e breve na superfície do Sol | soundpad pessoal — dispara sob demanda um som curto e marcante: aperta o botão, o som aparece de uma vez e some. Decidido no refinamento da SPEC-001, quando o projeto ainda se chamava "Soundpad" |
 | **Translunar** | injeção translunar: a queima de motor que tira a nave da órbita da Terra e a manda para outro mundo | pipeline de legendas multilíngues — o corte em pt-BR sai do público de origem e é lançado para os públicos de outros idiomas, localizado em vez de traduzido literalmente; a manobra é literalmente uma *burn*, e a ferramenta queima a legenda no vídeo; *trans-* ecoa *translate* sem prometer tradução literal |
 | **Synestia** | o anel de rocha vaporizada que se formou depois da colisão que criou a Lua, de onde ela se condensou aos poucos | ferramenta de estudos — o conhecimento de um tema, novo ou revisto, se forma em camadas pequenas, cada uma presa à anterior, com um tutor que pergunta em vez de entregar a resposta |
+| **Vega** | α Lyrae, a referência de brilho da astronomia: o ponto zero da escala de magnitude, contra o qual o brilho das outras estrelas foi medido por séculos ("sistema Vega") | biblioteca de componentes do ecossistema — a referência visual contra a qual todos os produtos se medem; mudou a referência, muda a identidade de todos os produtos de uma vez |
 
 Translunar, decidido em 2026-10-28 a partir da SPEC-001 ("Pipeline de legendas
 multilíngues"). Disponibilidade na data: npm e PyPI livres, `translunar.dev` e
@@ -121,6 +122,22 @@ metáfora. Termos avaliados e descartados para esse produto:
 - **Accrete**, **Protostar**, **Regolith**, **Moonlet**, **Crescent**, **Ephemeris**,
   **Halley**, **Mira**, **Astra**, **Vesper**, **Selene**: ocupados, colidem com projetos
   conhecidos ou têm a metáfora fraca.
+
+Vega, decidido em 2026-11-10. Não é um produto para o usuário final, e sim a biblioteca de
+componentes React que nasce do `@atria/ui` (botões, campos, diálogos, toasts, abas, cartões,
+estados de vazio e de erro, sobre os tokens do pacote de tema) e passa a ser consumida por
+todos os produtos. Publicada sob o escopo `@ishtar-sink`, livre no npm na data
+(`@ishtar-sink/vega`). Ressalva aceita: a gramática de visualização Vega (`vega/vega`, cerca de
+12 mil estrelas, dona do nome sem escopo no npm) usa o termo no mesmo ecossistema JavaScript,
+então buscas e discussões de frontend vão misturar as duas; o escopo evita a colisão no
+pacote. Termos avaliados e descartados:
+
+- **Asterism** (desenho de estrelas de constelações diferentes, como o Triângulo de Verão) e
+  **Barycenter** (o centro de massa que todos os corpos orbitam): metáforas boas, mas não
+  agradaram pelo som.
+- **Albireo** (estrela dupla dourada e azul): livre, mas descreve só os dois temas, não as
+  peças compartilhadas.
+- **Photosphere**, **Corona**, **Lyra** e **Cassini**: longos, ocupados ou sem mecânica.
 
 ## Sistema visual: paleta única em todo o ecossistema
 
@@ -437,7 +454,10 @@ preparados para virar a biblioteca compartilhada.
 **Regra prática**: todo produto novo importa o pacote de tema compartilhado em vez de
 redeclarar essas cores. Hoje o pacote vive dentro de cada produto (`packages/theme` no
 Nebula e no Atria) com um comentário no topo apontando este documento como origem; a
-extração para um pacote único da organização, consumido por ambos, ainda está pendente. Um
+extração para um pacote único da organização, consumido por ambos, ainda está pendente. Os
+componentes seguem o mesmo caminho: o `@atria/ui` vira a **Vega**, a biblioteca de
+componentes do ecossistema, e nenhum produto novo deve recriar um componente que já existe
+nela. Um
 valor mudado no pacote compartilhado muda em todos os produtos de uma vez — é a garantia de
 que a paleta não diverge com o tempo.
 
