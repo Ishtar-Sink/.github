@@ -368,7 +368,9 @@ ilustração, onde contraste de texto não se aplica.
 > anteriores estão nas tabelas dela. `gradients` e as escalas de forma e espaço não mudam.
 
 ```ts
-// packages/theme/src/tokens.ts — fonte única; nenhum app redeclara cor.
+// Vega: src/theme/tokens.ts (@ishtar-sink/vega) — fonte única; nenhum app redeclara cor.
+// Fonte de verdade da identidade visual do ecossistema Ishtar Sink (DEC-001, [project/theme-08]).
+// tokens.css espelha estes valores; mudança aqui é levada para Ishtar-Sink/.github docs/identidade-ecossistema.md.
 
 export const light = {
   bg:            '#F3F0FA', // lavanda claro: a diferença para o cartão branco cria a primeira camada
@@ -484,6 +486,34 @@ export const radii = { sm: 8, md: 12, lg: 18, xl: 26, pill: 999 };
 export const space = (n: number) => n * 4; // grade de 4px
 ```
 
+Tokens acrescentados na Vega 0.1.0 (2026-11-10), para que nenhum componente tenha peso de
+fonte, entrelinha, camada ou cor de item literais:
+
+```ts
+export const fontWeights = { semibold: 600, bold: 700, extrabold: 800 };
+export const lineHeights = { tight: 1.1, relaxed: 1.6 };
+export const zIndices = { dropdown: 40, popover: 45, toast: 200 }; // dropdown, popover e toast
+
+// Pares de cor dos itens sem imagem própria; o ItemSwatch escolhe o par pelo hash do id.
+// Substitui paletteFor/artPalettes do @atria/theme, com os mesmos valores.
+export const itemPalette = [
+  ['#7C3AED', '#06B6D4'],
+  ['#A855F7', '#22D3EE'],
+  ['#6366F1', '#2DD4BF'],
+  ['#8B5CF6', '#38BDF8'],
+  ['#4C1D95', '#0E7490'],
+  ['#9333EA', '#67E8F9'],
+  ['#5B21B6', '#14B8A6'],
+  ['#C084FC', '#0891B2'],
+  ['#7E22CE', '#06B6D4'],
+  ['#6D28D9', '#5EEAD4'],
+];
+```
+
+No `tokens.css`, eles viram `--font-weight-*`, `--line-height-*`, `--z-*` e
+`--item-palette-N-from`/`--item-palette-N-to`, e o gradiente `deep` ganha a variável
+`--deep-gradient` (`linear-gradient(135deg, #6d28d9, #7c3aed)`).
+
 **Raio dos controles**: botões, grupos de botões e seletores usam `radii.md` (12px), o mesmo
 dos campos de formulário, para que botão e campo lado a lado tenham a mesma forma.
 `radii.pill` fica só para badges, chips, barras de progresso e elementos circulares (botão
@@ -492,10 +522,10 @@ for conveniente. Decidido no Atria em 2026-10-30, quando os componentes começar
 preparados para virar a biblioteca compartilhada.
 
 **Regra prática**: todo produto novo importa o pacote de tema compartilhado em vez de
-redeclarar essas cores. Hoje o pacote vive dentro de cada produto (`packages/theme` no
-Nebula e no Atria) com um comentário no topo apontando este documento como origem; a
-extração para um pacote único da organização vai para a **Vega**, que exporta o tema junto
-com os componentes do `@atria/ui`. Nenhum produto novo deve recriar um componente que já
+redeclarar essas cores. Desde 2026-11-10 o pacote é o `@ishtar-sink/vega` (0.1.0), extraído do `@atria/ui` e do
+`@atria/theme`: os tokens ficam em `src/theme/tokens.ts` da [Vega](https://github.com/Ishtar-Sink/Vega),
+com um comentário no topo apontando este documento como origem, e saem junto com os
+componentes. O `packages/theme` do Nebula e do Atria é legado e migra para a Vega. Nenhum produto novo deve recriar um componente que já
 existe nela. Um valor mudado no tema padrão da Vega muda em todos os produtos que o usam de
 uma vez — é a garantia de que a paleta não diverge com o tempo. Um produto com paleta própria
 (ver a subseção `2026-11`) continua importando a Vega e substitui só os valores do tema.
