@@ -18,7 +18,8 @@ projeto existe nesta organização, ele está inteiro no repositório.
 | [Atria](https://github.com/Ishtar-Sink/Atria) | Hub pessoal — financeiro, tarefas, diário, notas e acervo num só lugar, sem métrica de produtividade nem cobrança visual. Roda no seu servidor. |
 | [Flare](https://github.com/Ishtar-Sink/Flare) *(em desenvolvimento)* | Soundpad pessoal com backoffice web e plugin para o Stream Deck — biblioteca de sons a partir de links ou arquivos, recorte do trecho e vários sons ao mesmo tempo, com saída para o Discord, o OBS ou a caixa de som. Roda no seu servidor. |
 | [Translunar](https://github.com/Ishtar-Sink/Translunar) *(em desenvolvimento)* | Pipeline de legendas multilíngues — pega cortes de vídeo vertical em português e gera versões legendadas em inglês, espanhol e francês, localizadas em vez de traduzidas ao pé da letra e prontas para Reels, TikTok, Shorts e X. O vídeo não sai da sua máquina. |
-| [Synestia](https://github.com/Ishtar-Sink/Synestia) *(em desenvolvimento)* | Ferramenta de estudos com tutor — escolha um tema, novo ou esquecido, e aprenda em passos pequenos, com perguntas em vez de respostas prontas e acompanhamento do que já ficou firme. Roda na sua máquina. |
+| [Synestia](https://github.com/Ishtar-Sink/Synestia) *(em desenvolvimento)* | Plataforma de estudos para usar sozinho ou numa escola — escolha um tema, novo ou esquecido, e aprenda em passos pequenos, com revisão do que errou, simulados e acompanhamento da turma. Funciona offline no celular. Roda no seu servidor. |
+| [Vega](https://github.com/Ishtar-Sink/Vega) *(em desenvolvimento)* | Biblioteca de componentes React que todos os projetos daqui usam — os mesmos botões, campos e diálogos, sobre a mesma paleta. É o que faz um projeto do Ishtar Sink parecer um projeto do Ishtar Sink. |
 
 Mais coisas a caminho.
 
@@ -46,8 +47,8 @@ explicada e uma página do que costuma dar errado.
 Sem regra rígida de stack: cada projeto usa o que faz sentido para o problema dele. O que é
 compartilhado entre todos:
 
-- **Identidade visual única** — mesma paleta, mesma tipografia, mesmas escalas. Você
-  reconhece um projeto do Ishtar Sink de longe.
+- **Identidade visual única** — mesma paleta, mesma tipografia, mesmas escalas e os mesmos
+  componentes, da biblioteca Vega. Você reconhece um projeto do Ishtar Sink de longe.
 - **Convenção de nomes** — todo produto leva o nome de um fenômeno astronômico cujo
   comportamento real descreve o que o software faz. Nebula é uma nuvem de poeira que junta
   matéria dispersa e forma estrelas; o player junta arquivos soltos e forma uma biblioteca.
@@ -58,7 +59,8 @@ compartilhado entre todos:
   mundo; a ferramenta tira o vídeo do público de origem e o lança para outros idiomas, com a
   legenda queimada na imagem. Synestia é o anel de rocha vaporizada de onde a Lua se
   condensou aos poucos; a ferramenta de estudos forma o conhecimento do mesmo jeito, camada
-  por camada.
+  por camada. Vega é a estrela que serviu de referência para medir o brilho de todas as
+  outras; a biblioteca de componentes é a referência visual de todos os projetos.
 - **Autohospedagem em primeiro lugar**, não como um extra depois.
 
 As duas primeiras convenções estão escritas em
