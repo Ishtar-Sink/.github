@@ -139,11 +139,51 @@ pacote. Termos avaliados e descartados:
   peças compartilhadas.
 - **Photosphere**, **Corona**, **Lyra** e **Cassini**: longos, ocupados ou sem mecânica.
 
-## Sistema visual: paleta única em todo o ecossistema
+## Sistema visual: tema padrão do ecossistema
 
-Decisão deliberada: **todo produto usa exatamente a mesma paleta**, não uma variação por
-app. Prioriza reconhecimento de marca forte sobre diferenciação visual entre produtos — a
-identidade visual diz "isto é Ishtar Sink", o nome e o ícone dizem qual produto é.
+A paleta desta seção é o **tema padrão do Ishtar Sink**, exportado pela
+[Vega](https://github.com/Ishtar-Sink/Vega) junto com os componentes. É o ponto de partida de
+todo produto, e um produto pode trocá-la por uma paleta própria (ver a subseção `2026-11`
+logo abaixo). Até 2026-11 a regra era outra: todo produto usava exatamente a mesma paleta,
+priorizando o reconhecimento da marca pela cor.
+
+### 2026-11 — o tema sai da Vega, e cada produto pode ter paleta própria
+
+> Decidido em 2026-11-10, junto com a criação da Vega, a biblioteca de componentes do
+> ecossistema.
+
+A Vega exporta **componentes e temas**. O tema Ishtar Sink, com os tokens desta seção, é o
+padrão, e cada produto pode substituí-lo por uma paleta própria.
+
+Por que a regra mudou: a Vega é uma biblioteca aberta, que qualquer pessoa pode usar fora do
+ecossistema, e por isso precisa ser tematizável de verdade. Com essa capacidade pronta, os
+produtos do ecossistema ganham a mesma liberdade.
+
+**O que continua compartilhado** entre todos os produtos, com ou sem paleta própria:
+
+- os componentes da Vega;
+- a tipografia, os raios, o espaço e o movimento;
+- a **estrutura** dos tokens: os mesmos nomes (`bg`, `surface`, `primary`, `success`, os
+  `*Soft`, as camadas de elevação), nos temas claro e escuro;
+- a alternância de tema, com o claro como padrão;
+- as regras de contraste.
+
+A identidade "isto é Ishtar Sink" passa a vir da forma dos componentes, da tipografia e da
+convenção de nomes, mais do que da cor. É uma troca consciente: um produto com paleta própria
+se reconhece menos pela cor como parte da família.
+
+**Regras para um produto com paleta própria:**
+
+- **O tema é criado com a API de tema da Vega** e passado para os componentes. Nenhum
+  componente redeclara cor, nem no produto nem na Vega.
+- **Todos os tokens nos dois temas.** Uma paleta própria cobre claro e escuro, com o mesmo
+  conjunto de tokens do tema padrão.
+- **Contraste AA verificado.** O tema passa pelas mesmas verificações de contraste do tema
+  padrão (texto normal em 4,5:1, `textFaint` em 3:1), feitas por teste e não estimadas.
+- **Estados continuam distinguíveis.** Sucesso, aviso, erro e informação seguem diferentes
+  entre si e não dependem só do matiz: o fundo `*Soft`, o ícone e a palavra dizem o mesmo.
+- **A decisão fica registrada no produto**, com o motivo, na documentação de identidade dele.
+  Um produto sem motivo para paleta própria usa o tema padrão.
 
 ### 2026-10 — nova paleta com profundidade (Flare)
 
@@ -454,26 +494,25 @@ preparados para virar a biblioteca compartilhada.
 **Regra prática**: todo produto novo importa o pacote de tema compartilhado em vez de
 redeclarar essas cores. Hoje o pacote vive dentro de cada produto (`packages/theme` no
 Nebula e no Atria) com um comentário no topo apontando este documento como origem; a
-extração para um pacote único da organização, consumido por ambos, ainda está pendente. Os
-componentes seguem o mesmo caminho: o `@atria/ui` vira a **Vega**, a biblioteca de
-componentes do ecossistema, e nenhum produto novo deve recriar um componente que já existe
-nela. Um
-valor mudado no pacote compartilhado muda em todos os produtos de uma vez — é a garantia de
-que a paleta não diverge com o tempo.
+extração para um pacote único da organização vai para a **Vega**, que exporta o tema junto
+com os componentes do `@atria/ui`. Nenhum produto novo deve recriar um componente que já
+existe nela. Um valor mudado no tema padrão da Vega muda em todos os produtos que o usam de
+uma vez — é a garantia de que a paleta não diverge com o tempo. Um produto com paleta própria
+(ver a subseção `2026-11`) continua importando a Vega e substitui só os valores do tema.
 
 **Alternância de tema**: `data-theme="light" | "dark"` no elemento raiz, **padrão `light`**,
 `prefers-color-scheme` respeitado só quando o usuário nunca escolheu explicitamente.
 
-### White label: a única exceção à paleta única
+### White label: troca de marca por instância
 
 > Decidida em 2026-11-10, no estudo de escopo do Synestia (`Ishtar-Sink/Synestia`,
 > `docs/estudos/ESTUDO-001-plataforma-de-estudos.md`), o primeiro produto com white label.
 
 Um produto pode permitir que **a instância de um terceiro** troque a marca, para que uma
 escola ou um coletivo apareça para o próprio público com o próprio nome. O produto em si
-continua com o nome e a paleta do Ishtar Sink, que é o que aparece numa instalação sem
-configuração. A regra da paleta única vale para os produtos; o white label é uma escolha de
-quem hospeda.
+continua com o próprio nome e o próprio tema (o padrão do Ishtar Sink, ou a paleta própria
+do produto), que é o que aparece numa instalação sem configuração. O tema é uma escolha do
+produto; o white label é uma escolha de quem hospeda.
 
 O que a instância pode trocar, sempre pelo backoffice e sem mexer no código:
 
@@ -568,8 +607,10 @@ não-negociáveis:
    github.com/Ishtar-Sink/.github/blob/main/docs/identidade-ecossistema.md para o precedente e
    o checklist, caso o nome ainda não esteja fechado).
 
-2. **Identidade visual**: usar a paleta e os tokens do ecossistema tal como estão, sem criar
-   uma paleta própria para este produto.
+2. **Identidade visual**: montar a interface com a Vega (componentes e tema). Usar o tema
+   padrão do Ishtar Sink, descrito abaixo, a menos que este produto tenha decidido uma paleta
+   própria; nesse caso, criá-la com a API de tema da Vega, nos dois temas, com contraste AA
+   verificado e o motivo registrado (ver a subseção `2026-11` do documento de identidade).
    - Valores vigentes desde 2026-10 (Flare): ver a subseção `2026-10` deste documento. Onde
      esta lista diverge, a subseção nova vale.
    - **Tema claro é o padrão**, dark é a alternativa — não o único modo. Fundo claro

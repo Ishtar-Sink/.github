@@ -19,7 +19,7 @@ projeto existe nesta organização, ele está inteiro no repositório.
 | [Flare](https://github.com/Ishtar-Sink/Flare) *(em desenvolvimento)* | Soundpad pessoal com backoffice web e plugin para o Stream Deck — biblioteca de sons a partir de links ou arquivos, recorte do trecho e vários sons ao mesmo tempo, com saída para o Discord, o OBS ou a caixa de som. Roda no seu servidor. |
 | [Translunar](https://github.com/Ishtar-Sink/Translunar) *(em desenvolvimento)* | Pipeline de legendas multilíngues — pega cortes de vídeo vertical em português e gera versões legendadas em inglês, espanhol e francês, localizadas em vez de traduzidas ao pé da letra e prontas para Reels, TikTok, Shorts e X. O vídeo não sai da sua máquina. |
 | [Synestia](https://github.com/Ishtar-Sink/Synestia) *(em desenvolvimento)* | Plataforma de estudos para usar sozinho ou numa escola — escolha um tema, novo ou esquecido, e aprenda em passos pequenos, com revisão do que errou, simulados e acompanhamento da turma. Funciona offline no celular. Roda no seu servidor. |
-| [Vega](https://github.com/Ishtar-Sink/Vega) *(em desenvolvimento)* | Biblioteca de componentes React que todos os projetos daqui usam — os mesmos botões, campos e diálogos, sobre a mesma paleta. É o que faz um projeto do Ishtar Sink parecer um projeto do Ishtar Sink. |
+| [Vega](https://github.com/Ishtar-Sink/Vega) *(em desenvolvimento)* | Biblioteca de componentes React e temas que todos os projetos daqui usam — os mesmos botões, campos e diálogos, com o tema do Ishtar Sink como padrão e espaço para uma paleta própria. Aberta para qualquer projeto, dentro ou fora do ecossistema. |
 
 Mais coisas a caminho.
 
@@ -47,8 +47,9 @@ explicada e uma página do que costuma dar errado.
 Sem regra rígida de stack: cada projeto usa o que faz sentido para o problema dele. O que é
 compartilhado entre todos:
 
-- **Identidade visual única** — mesma paleta, mesma tipografia, mesmas escalas e os mesmos
-  componentes, da biblioteca Vega. Você reconhece um projeto do Ishtar Sink de longe.
+- **Identidade visual compartilhada** — os mesmos componentes e o mesmo tema padrão, da
+  biblioteca Vega, com a mesma tipografia e as mesmas escalas. Você reconhece um projeto do
+  Ishtar Sink de longe, mesmo quando ele tem cor própria.
 - **Convenção de nomes** — todo produto leva o nome de um fenômeno astronômico cujo
   comportamento real descreve o que o software faz. Nebula é uma nuvem de poeira que junta
   matéria dispersa e forma estrelas; o player junta arquivos soltos e forma uma biblioteca.
