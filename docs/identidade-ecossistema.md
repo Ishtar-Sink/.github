@@ -82,6 +82,7 @@ Checklist antes de fechar um nome:
 | **Atria** | α Trianguli Australis, estrela mais brilhante do Triângulo Austral | hub pessoal (financeiro, tarefas, diário, notas, acervo) — *átrio*: o pátio central da casa romana para onde todos os cômodos se abrem e por onde entra a luz, também a câmara do coração onde tudo chega antes de ser distribuído; módulos independentes que se abrem para um centro comum |
 | **Flare** | erupção solar: um clarão súbito, intenso e breve na superfície do Sol | soundpad pessoal — dispara sob demanda um som curto e marcante: aperta o botão, o som aparece de uma vez e some. Decidido no refinamento da SPEC-001, quando o projeto ainda se chamava "Soundpad" |
 | **Translunar** | injeção translunar: a queima de motor que tira a nave da órbita da Terra e a manda para outro mundo | pipeline de legendas multilíngues — o corte em pt-BR sai do público de origem e é lançado para os públicos de outros idiomas, localizado em vez de traduzido literalmente; a manobra é literalmente uma *burn*, e a ferramenta queima a legenda no vídeo; *trans-* ecoa *translate* sem prometer tradução literal |
+| **Synestia** | o anel de rocha vaporizada que se formou depois da colisão que criou a Lua, de onde ela se condensou aos poucos | ferramenta de estudos — o conhecimento de um tema, novo ou revisto, se forma em camadas pequenas, cada uma presa à anterior, com um tutor que pergunta em vez de entregar a resposta |
 
 Translunar, decidido em 2026-10-28 a partir da SPEC-001 ("Pipeline de legendas
 multilíngues"). Disponibilidade na data: npm e PyPI livres, `translunar.dev` e
@@ -99,6 +100,27 @@ que Nebula e Atria. Termos avaliados e descartados para esse produto:
 - **Doppler** (o mesmo sinal percebido de forma diferente por cada observador): colide com a
   empresa Doppler, e npm e PyPI estão ocupados.
 - **Parallax**, **Perseid** e **Lensing**: ocupados, ou com a metáfora mais fraca.
+
+Synestia, decidido em 2026-11-10. O primeiro uso é a preparação para um vestibular, mas o
+nome descreve a ferramenta genérica — aprender um tema do zero ou revisar um esquecido —, não
+esse caso. Disponibilidade na data: npm, PyPI, `synestia.dev` e `synestia.app` livres;
+`synestia.com` registrado; no GitHub, só um sistema operacional pequeno com o termo.
+Ressalva aceita: o termo é de 2017 e pouco conhecido, então o README precisa explicar a
+metáfora. Termos avaliados e descartados para esse produto:
+
+- **Nomes presos ao caso de uso**: Encke (o cometa que volta com mais frequência), Saros (o
+  ciclo que prevê eclipses), Cepheid (a estrela que pulsa num período regular), Ceres (o
+  asteroide perdido e reencontrado por cálculo), Spica e Alcor. Todos descreviam revisão ou
+  prova, e a ferramenta também serve para aprender algo novo. Saros, Cepheid e Encke também
+  não agradaram pelo som.
+- **Maia** (a estrela das Plêiades que deu origem a *maiêutica*, o método socrático): a
+  metáfora é genérica e boa, mas npm, PyPI e domínios estão ocupados, e o nome não agradou.
+- **Accretion** (acreção, crescer grão por grão): agradou, mas os domínios estão ocupados e
+  há um gerenciador de conhecimento pessoal com o mesmo nome no GitHub.
+- **Planetesimal**: livre, mas longo e técnico.
+- **Accrete**, **Protostar**, **Regolith**, **Moonlet**, **Crescent**, **Ephemeris**,
+  **Halley**, **Mira**, **Astra**, **Vesper**, **Selene**: ocupados, colidem com projetos
+  conhecidos ou têm a metáfora fraca.
 
 ## Sistema visual: paleta única em todo o ecossistema
 
@@ -405,6 +427,13 @@ export const radii = { sm: 8, md: 12, lg: 18, xl: 26, pill: 999 };
 export const space = (n: number) => n * 4; // grade de 4px
 ```
 
+**Raio dos controles**: botões, grupos de botões e seletores usam `radii.md` (12px), o mesmo
+dos campos de formulário, para que botão e campo lado a lado tenham a mesma forma.
+`radii.pill` fica só para badges, chips, barras de progresso e elementos circulares (botão
+só de ícone, avatar). Botões em pill que já existem nos produtos são legado e migram quando
+for conveniente. Decidido no Atria em 2026-10-30, quando os componentes começaram a ser
+preparados para virar a biblioteca compartilhada.
+
 **Regra prática**: todo produto novo importa o pacote de tema compartilhado em vez de
 redeclarar essas cores. Hoje o pacote vive dentro de cada produto (`packages/theme` no
 Nebula e no Atria) com um comentário no topo apontando este documento como origem; a
@@ -496,7 +525,8 @@ não-negociáveis:
    - Fonte **Outfit** para título/número grande/rótulo em caixa alta (letter-spacing
      negativo nos grandes, positivo nos pequenos); **Inter** para corpo, formulário e
      tabela, se o produto tiver texto longo.
-   - Raios de borda: 8/12/18/26px, pill para badges e botões redondos.
+   - Raios de borda: 8/12/18/26px. Botões e seletores com 12px, o mesmo dos campos;
+     pill só para badges, chips, progresso e elementos circulares.
    - Se houver itens sem imagem própria (cards, avatares, tags), gerar a cor a partir de
      um hash determinístico do id, não de estado salvo — ver "cor determinística por item"
      no doc de identidade.

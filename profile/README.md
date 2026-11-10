@@ -18,6 +18,7 @@ projeto existe nesta organização, ele está inteiro no repositório.
 | [Atria](https://github.com/Ishtar-Sink/Atria) | Hub pessoal — financeiro, tarefas, diário, notas e acervo num só lugar, sem métrica de produtividade nem cobrança visual. Roda no seu servidor. |
 | [Flare](https://github.com/Ishtar-Sink/Flare) *(em desenvolvimento)* | Soundpad pessoal com backoffice web e plugin para o Stream Deck — biblioteca de sons a partir de links ou arquivos, recorte do trecho e vários sons ao mesmo tempo, com saída para o Discord, o OBS ou a caixa de som. Roda no seu servidor. |
 | [Translunar](https://github.com/Ishtar-Sink/Translunar) *(em desenvolvimento)* | Pipeline de legendas multilíngues — pega cortes de vídeo vertical em português e gera versões legendadas em inglês, espanhol e francês, localizadas em vez de traduzidas ao pé da letra e prontas para Reels, TikTok, Shorts e X. O vídeo não sai da sua máquina. |
+| [Synestia](https://github.com/Ishtar-Sink/Synestia) *(em desenvolvimento)* | Ferramenta de estudos com tutor — escolha um tema, novo ou esquecido, e aprenda em passos pequenos, com perguntas em vez de respostas prontas e acompanhamento do que já ficou firme. Roda na sua máquina. |
 
 Mais coisas a caminho.
 
@@ -55,7 +56,9 @@ compartilhado entre todos:
   solar, um clarão súbito e breve; o soundpad dispara um som curto que aparece de uma vez e
   some. Translunar é a queima de motor que tira a nave da órbita da Terra rumo a outro
   mundo; a ferramenta tira o vídeo do público de origem e o lança para outros idiomas, com a
-  legenda queimada na imagem.
+  legenda queimada na imagem. Synestia é o anel de rocha vaporizada de onde a Lua se
+  condensou aos poucos; a ferramenta de estudos forma o conhecimento do mesmo jeito, camada
+  por camada.
 - **Autohospedagem em primeiro lugar**, não como um extra depois.
 
 As duas primeiras convenções estão escritas em
